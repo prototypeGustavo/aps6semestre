@@ -7,6 +7,7 @@ package reconhecimento;
 
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import org.bytedeco.javacpp.opencv_core.Mat;
 import org.bytedeco.javacpp.opencv_core.Rect;
 import org.bytedeco.javacpp.opencv_core.RectVector;
@@ -33,7 +34,7 @@ public class captura {
         KeyEvent tecla = null;
         OpenCVFrameConverter.ToMat converteMat = new OpenCVFrameConverter.ToMat();
         OpenCVFrameGrabber camera = new OpenCVFrameGrabber(0);
-        camera.start();
+        //camera.start();
         
         CascadeClassifier detectorFace = new CascadeClassifier("src\\recursos\\haarcascade_frontalface_alt.xml");
         
@@ -42,9 +43,14 @@ public class captura {
         Mat imagemColorida = new Mat();
         int numeroAmostras = 25;
         int amostra = 1;
-        System.out.println("Digite seu id: ");
-        Scanner cadastro = new Scanner(System.in);
-        int idPessoa = cadastro.nextInt();
+            int number;
+            String numero;
+            numero = JOptionPane.showInputDialog("Digite seu id para cadastro");
+            number = Integer.parseInt(numero);
+        //System.out.println("Digite seu id: ");
+        //Scanner cadastro = new Scanner(System.in);
+        //int idPessoa = cadastro.nextInt();
+            int idPessoa = number;
         while ((frameCapturado = camera.grab()) != null) {
             imagemColorida = converteMat.convert(frameCapturado);
             Mat imagemCinza = new Mat();

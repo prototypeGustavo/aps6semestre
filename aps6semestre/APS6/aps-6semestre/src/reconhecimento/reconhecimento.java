@@ -7,6 +7,7 @@ package reconhecimento;
 
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
+import javax.swing.JFrame;
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import static org.bytedeco.javacpp.opencv_core.FONT_HERSHEY_PLAIN;
@@ -82,6 +83,8 @@ public class reconhecimento {
                     nome = "Desconhecido";
                 } else {
                     nome = pessoas[predicao] + " - " + confianca.get(0);
+                    //inserir timer aqui
+                    trocar();
                 }
                 
                 int x = Math.max(dadosFace.tl().x() - 10, 0);
@@ -101,5 +104,10 @@ public class reconhecimento {
         }
         cFrame.dispose();
         camera.stop();
+    }
+    
+    public static void trocar (){
+        interfaceUsuario.interfaceInicial.getWindows();
+        //fechar a jFrame atual e mudar para a com BD
     }
 }

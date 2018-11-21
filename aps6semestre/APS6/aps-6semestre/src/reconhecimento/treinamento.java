@@ -8,6 +8,7 @@ package reconhecimento;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.IntBuffer;
+import javax.swing.JOptionPane;
 import org.bytedeco.javacpp.opencv_core;
 import static org.bytedeco.javacpp.opencv_core.CV_32SC1;
 import org.bytedeco.javacpp.opencv_core.Mat;
@@ -27,6 +28,9 @@ import static org.bytedeco.javacpp.opencv_imgproc.resize;
  */
 public class treinamento {
     public static void main(String args[]) {
+        
+    }
+    public static void treinar (){
         File diretorio = new File("src\\fotos");
         FilenameFilter filtroImagem = new FilenameFilter() {
             @Override
@@ -59,5 +63,7 @@ public class treinamento {
         fisherfaces.save("src\\recursos\\classificadorFisherFaces.yml");
         lbph.train(fotos, rotulos);
         lbph.save("src\\recursos\\classificadorLBPH.yml");
+        
+        JOptionPane.showMessageDialog (null, "Treinamento realizado, já pode reconhecer o rosto");
     }
 }
