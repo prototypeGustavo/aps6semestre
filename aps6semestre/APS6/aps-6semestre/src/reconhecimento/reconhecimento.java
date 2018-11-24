@@ -11,6 +11,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import static org.bytedeco.javacpp.opencv_core.FONT_HERSHEY_PLAIN;
@@ -43,10 +44,11 @@ import org.bytedeco.javacv.OpenCVFrameGrabber;
  */
 public class reconhecimento {    
     public static void reconhecer () throws FrameGrabber.Exception, InterruptedException {
+        int reconheceu = 0;
         KeyEvent tecla = null;
         OpenCVFrameConverter.ToMat converteMat = new OpenCVFrameConverter.ToMat();
         OpenCVFrameGrabber camera = new OpenCVFrameGrabber(0);
-        String[] pessoas = {"", "Gustavo", "Dark Gustavo"};
+        String[] pessoas = {"", "Gustavo", "Dark Gustavo","","","","","","","","","","","","","","",""};
         camera.start();
         
         CascadeClassifier detectorFace = new CascadeClassifier("src\\recursos\\haarcascade_frontalface_alt.xml");

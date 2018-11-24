@@ -17,7 +17,6 @@ import reconhecimento.captura;
  * @author gustavo.alves
  */
 public class interfaceInicial extends javax.swing.JFrame {
-
     /**
      * Creates new form interfaceInicial
      */
@@ -110,7 +109,7 @@ public class interfaceInicial extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Para cadastrar um rosto,\n pressione Q para fotografar \n até que a mensagem de confirmação apareça");
+        JOptionPane.showMessageDialog(null, "Para cadastrar um rosto,\n pressione Q para fotografar \n até que a mensagem de confirmação \n apareça (25 fotos)");
         try {
             captura.captura();
         } catch (FrameGrabber.Exception ex) {
@@ -129,7 +128,6 @@ public class interfaceInicial extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             reconhecimento.reconhecimento.reconhecer();
-            setVisible(false);
         } catch (FrameGrabber.Exception ex) {
             Logger.getLogger(interfaceInicial.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
@@ -172,7 +170,7 @@ public class interfaceInicial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new interfaceInicial().setVisible(true);
+                iI.setVisible(true);
             }
         });
     }
@@ -181,7 +179,8 @@ public class interfaceInicial extends javax.swing.JFrame {
     }
     
     
-    
+    static interfaceInicial iI = new interfaceInicial();
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

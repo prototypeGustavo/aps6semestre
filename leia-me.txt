@@ -1,0 +1,9 @@
+Para o bom funcionamento do software:
+
+Adicione as bibliotecas que o netbeans ira pedir, elas estão na pasta de nome "java-cv-bin"
+
+Para reconhecer um rosto ele precisa que 25 imagens sejam tiradas.
+Clique em capturar e tire as 25 fotos.
+Após isso, clique em treinar para que ele possa reconhecer
+Insira seu nome na linha 51 da classe "reconhecimento", na posição+1 que você colocou como id
+Depois clique em reconhecimento para ele realizar o reconhecimento da face
