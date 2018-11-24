@@ -5,8 +5,11 @@
  */
 package reconhecimento;
 
+import interfaceUsuario.interfaceInicial;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
@@ -38,8 +41,8 @@ import org.bytedeco.javacv.OpenCVFrameGrabber;
  *
  * @author Gustavo
  */
-public class reconhecimento {
-    public static void main(String arg[]) throws FrameGrabber.Exception, InterruptedException {
+public class reconhecimento {    
+    public static void reconhecer () throws FrameGrabber.Exception, InterruptedException {
         KeyEvent tecla = null;
         OpenCVFrameConverter.ToMat converteMat = new OpenCVFrameConverter.ToMat();
         OpenCVFrameGrabber camera = new OpenCVFrameGrabber(0);
@@ -55,6 +58,7 @@ public class reconhecimento {
         
         reconhecedor.setThreshold(5000);
         CanvasFrame cFrame = new CanvasFrame("Preview", CanvasFrame.getDefaultGamma() / camera.getGamma());
+        cFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame frameCapturado = null;
         Mat imagemColorida = new Mat();
         int numeroAmostras = 25;
@@ -83,8 +87,7 @@ public class reconhecimento {
                     nome = "Desconhecido";
                 } else {
                     nome = pessoas[predicao] + " - " + confianca.get(0);
-                    //inserir timer aqui
-                    trocar();
+                    
                 }
                 
                 int x = Math.max(dadosFace.tl().x() - 10, 0);
@@ -104,10 +107,5 @@ public class reconhecimento {
         }
         cFrame.dispose();
         camera.stop();
-    }
-    
-    public static void trocar (){
-        interfaceUsuario.interfaceInicial.getWindows();
-        //fechar a jFrame atual e mudar para a com BD
     }
 }

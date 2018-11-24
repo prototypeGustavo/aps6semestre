@@ -5,8 +5,12 @@
  */
 package reconhecimento;
 
+import interfaceUsuario.interfaceInicial;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.bytedeco.javacpp.opencv_core.Mat;
 import org.bytedeco.javacpp.opencv_core.Rect;
@@ -30,15 +34,22 @@ import org.bytedeco.javacv.OpenCVFrameGrabber;
  * @author Gustavo
  */
 public class captura {
-    public static void main(String arg[]) throws FrameGrabber.Exception, InterruptedException {
+    static int i = 0 ;
+    public static void somai(){
+        i = i+1;
+    }
+    public static void captura () throws FrameGrabber.Exception, InterruptedException{
+        i = 0;
         KeyEvent tecla = null;
         OpenCVFrameConverter.ToMat converteMat = new OpenCVFrameConverter.ToMat();
         OpenCVFrameGrabber camera = new OpenCVFrameGrabber(0);
-        //camera.start();
+        camera.start();
         
         CascadeClassifier detectorFace = new CascadeClassifier("src\\recursos\\haarcascade_frontalface_alt.xml");
         
         CanvasFrame cFrame = new CanvasFrame("Preview", CanvasFrame.getDefaultGamma() / camera.getGamma());
+        cFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //CanvasFrame cFrame = interfaceUsuario.interfaceInicial.a;
         Frame frameCapturado = null;
         Mat imagemColorida = new Mat();
         int numeroAmostras = 25;
@@ -89,7 +100,8 @@ public class captura {
                 break;
             }
         }
-        cFrame.dispose();
         camera.stop();
+        cFrame.dispose();
+        
     }
 }

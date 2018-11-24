@@ -27,9 +27,6 @@ import static org.bytedeco.javacpp.opencv_imgproc.resize;
  * @author gugal
  */
 public class treinamento {
-    public static void main(String args[]) {
-        
-    }
     public static void treinar (){
         File diretorio = new File("src\\fotos");
         FilenameFilter filtroImagem = new FilenameFilter() {
